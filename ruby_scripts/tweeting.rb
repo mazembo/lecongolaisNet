@@ -29,8 +29,7 @@ end
 end
 puts "You have Successfully tweeted a collection of #{@size} tweets"
 
-
-# Initiating few stuff
+# Now posting to facebook
 access_token = YAML.load(File.read("access-data.yml"))
 lecongolais = access_token["lecongolais"]
 user_token = access_token["user_token"]
@@ -59,83 +58,3 @@ puts "Successfully posted to the Lecongolais Page"
   end
 end
 puts "Successfully posted to the Maz Mav Timeline"
-
-
-# puts "Now wait while we are trying to post them on facebook pages"
-
-# @access_token = YAML.load(File.read("access-data.yml"))
-# user_token = @access_token["user_token"]
-# lecongolais = @access_token["lecongolais"]
-# exetat = @access_token["exetat"]
-# dielais = @access_token["dielais"]
-# asfade = @access_token["asfade"]
-#
-# @graph = Koala::Facebook::API.new(user_token)
-# @graph_lecongolais = Koala::Facebook::API.new(lecongolais)
-# @graph_exetat = Koala::Facebook::API.new(exetat)
-# @graph_dielais = Koala::Facebook::API.new(dielais)
-# @graph_asfade = Koala::Facebook::API.new(asfade)
-#
-# @custom_message = "lecongolais.net --Aimez notre page facebook www.facebook.com/lecongolais.net/ --Nous suivre sur Twitter @LecongolaisNet"
-#
-# # Posting to Mazembo profile
-# @articles.each do |article|
-#   # begin
-#     short_message = article[1]["title"] + "--" + article[1]["short_message"] + " " + @custom_message
-#     @graph.put_picture("#{article[1]["picture"]}", {:message => short_message})
-#   # rescue
-#   #   puts "There was an error trying to post to maz mav timeline"
-#   #   exit
-#   # end
-# end
-# puts "Successfully posted to the Maz Mav Timeline"
-# sleep 180
-#
-# # Posting to Lecongolais
-# @articles.each do |article|
-#   begin
-#     short_message = article[1]["title"] + "--" + article[1]["short_message"] + " " + @custom_message
-#     @graph_lecongolais.put_picture("#{article[1]["picture"]}", {:message => short_message})
-#   rescue
-#     puts "There was an error trying to post to lecongolais"
-#     exit
-#   end
-# end
-# puts "Successfully posted to lecongolais"
-# sleep 180
-# # Posting to Exetat
-# @articles.each do |article|
-#   begin
-#     short_message = article[1]["title"] + "--" + article[1]["short_message"] + " " + @custom_message
-#     @graph_exetat.put_picture("#{article[1]["picture"]}", {:message => short_message})
-#   rescue
-#     puts "There was an error trying to post to exetat"
-#     exit
-#   end
-# end
-# puts "Successfully exetat"
-# sleep 180
-# # Posting to dielais
-# @articles.each do |article|
-#   begin
-#     short_message = article[1]["title"] + "--" + article[1]["short_message"] + " " + @custom_message
-#     @graph_dielais.put_picture("#{article[1]["picture"]}", {:message => short_message})
-#   rescue
-#     puts "There was an error trying to post to maz mav timeline"
-#     exit
-#   end
-# end
-# puts "Successfully posted to dielais"
-# sleep 180
-# #Posting to asfade
-# @articles.each do |article|
-#   begin
-#     short_message = article[1]["title"] + "--" + article[1]["short_message"] + " " + @custom_message
-#     @graph_asfade.put_picture("#{article[1]["picture"]}", {:message => short_message})
-#   rescue
-#     puts "There was an error trying to post to maz mav timeline"
-#     exit
-#   end
-# end
-# puts "Successfully posted to asfade page"
-# puts "Congratulations!!! You have Successfully posted a collection of #{@size} tweets to your facebook pages"
