@@ -1,0 +1,34 @@
+from urllib import urlretrieve
+import re, urllib2
+import pickle
+
+# textfile = file('depth_1.txt','wt')
+print "Enter the URL you wish to crawl.."
+print 'Usage  - "http://phocks.org/stumble/creepy/" <-- With the double quotes'
+myurl = input("@> ")
+root_url = myurl
+date_published = "2017/02/01"
+request = urllib2.Request(myurl, headers={'User-Agent' : "Magic Browser"})
+response = urllib2.urlopen(request)
+html = response.read()
+links = []
+for i in re.findall('''href=["'](.[^"']+)["']''', html, re.I):
+    full_link = root_url + i
+    # for radio okapi
+    if date_published in full_link:
+        links.append(full_link)
+
+    print links
+    with open('2017-02-02-2-radio.txt', 'wb') as fp:
+        pickle.dump(links, fp)
+print "the file has been created"
+
+
+#         for ee in re.findall('''href=["'](.[^"']+)["']''', urllib.urlopen(i).read(), re.I):
+#                 print ee
+#                 textfile.write(ee+'\n')
+# textfile.close()
+
+# with open ('outfile', 'rb') as fp:
+#     itemlist = pickle.load(fp)with open ('outfile', 'rb') as fp:
+#     itemlist = pickle.load(fp) ;:
