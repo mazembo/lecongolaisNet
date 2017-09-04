@@ -8,6 +8,7 @@ import sys
 import yaml
 import pickle
 import hashlib
+import YamlTomongo
 
 def get_content(soup):
     title = soup.title.text
@@ -78,6 +79,9 @@ def process_textfile(textfile, today_date):
     new_itemlist = sorted(set(itemlist))
     articles = {}
     date_published = today_date
+    year = int(date_published[0:4])
+    month = int(date_published[5:7])
+    day = int(date_published[8:10])
     yaml_file_name = date_published + ".yml"
     i = 0
     for item in new_itemlist:
@@ -118,6 +122,11 @@ def process_textfile(textfile, today_date):
 
 
     write_yaml(yaml_file_name, articles)
+    print "we are about to save the articles to MongoDB"
+    list_articles = YamlTomongo.dicToList(articles)
+    YamlTomongo.insertMultiple(list_articles, year, month, day)
+    print "the collection of articles has been saved to the MongoDB"
+
 # print (articles)
 # print len(articles)
 # print type(articles)
