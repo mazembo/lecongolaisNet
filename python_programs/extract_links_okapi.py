@@ -7,7 +7,7 @@ print "Enter the URL you wish to crawl.."
 print 'Usage  - "http://phocks.org/stumble/creepy/" <-- With the double quotes'
 myurl = input("@> ")
 root_url = myurl
-date_published = "2017/07/21"
+date_published = "2017/09/05"
 request = urllib2.Request(myurl, headers={'User-Agent' : "Magic Browser"})
 response = urllib2.urlopen(request)
 html = response.read()
@@ -21,7 +21,7 @@ links = sorted(set(links))
 for link in links:
     print link
 print len(links)
-with open('2017-07-21-radio.txt', 'wb') as fp:
+with open('2017-09-05-radio.txt', 'wb') as fp:
     pickle.dump(links, fp)
 print "the file has been created"
 
